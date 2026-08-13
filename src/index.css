@@ -281,3 +281,53 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Rich Text Editor Content Styles */
+.rich-text-content {
+  color: #1C1916;
+  line-height: 1.7;
+}
+
+.rich-text-content p {
+  margin-bottom: 1rem;
+}
+
+.rich-text-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem 0;
+  color: #1C1916;
+}
+
+.rich-text-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.75rem 0;
+  color: #1C1916;
+}
+
+.rich-text-content ul,
+.rich-text-content ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.rich-text-content li {
+  margin-bottom: 0.5rem;
+  color: #8A7E72;
+}
+
+.rich-text-content strong {
+  font-weight: 600;
+  color: #1C1916;
+}
+
+.rich-text-content em {
+  font-style: italic;
+  color: #8A7E72;
+}
+
+.rich-text-content u {
+  text-decoration: underline;
+  text-decoration-color: #C4A882;
+}

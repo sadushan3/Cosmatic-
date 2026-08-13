@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { formatCurrency } from '../lib/currency'
 import { supabase } from '../lib/supabase'
 import { brands } from '../data'
+import RichTextEditor from '../components/RichTextEditor'
 import type { Page, Product } from '../types'
 
 interface AdminPageProps {
@@ -520,13 +521,13 @@ export default function AdminPage({ setPage }: AdminPageProps) {
               )}
             </div>
 
-            <textarea
-              value={form.description}
-              onChange={e => updateField('description', e.target.value)}
-              placeholder="Write the product description..."
-              rows={6}
-              style={{ width: '100%', resize: 'vertical', padding: 14, fontFamily: 'inherit', border: '1px solid #E0D9CF', background: '#FAF8F5', color: '#1C1916', marginTop: 6 }}
-            />
+            <div style={{ marginTop: 6 }}>
+              <RichTextEditor
+                value={form.description}
+                onChange={value => updateField('description', value)}
+                placeholder="Write the product description..."
+              />
+            </div>
 
             <div style={{ marginTop: 22, display: 'flex', gap: 12, alignItems: 'center' }}>
               <button type="submit" className="btn-primary" disabled={saving || uploading}>

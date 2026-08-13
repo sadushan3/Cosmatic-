@@ -115,7 +115,11 @@ export default function ProductPage({ product, onAddToCart, wishlist, onWishlist
               )}
             </div>
 
-            <p style={{ fontSize: 15, color: '#8A7E72', lineHeight: 1.7, marginBottom: 28 }}>{product.description}</p>
+            <div
+              className="rich-text-content"
+              style={{ fontSize: 15, color: '#8A7E72', lineHeight: 1.7, marginBottom: 28 }}
+              dangerouslySetInnerHTML={{ __html: product.description || '<p>No description available</p>' }}
+            />
 
             {/* Availability */}
             <div className="flex items-center gap-2 mb-8" style={{ fontSize: 13, color: product.inStock ? '#2D7A4F' : '#C0392B' }}>
@@ -240,7 +244,11 @@ export default function ProductPage({ product, onAddToCart, wishlist, onWishlist
               <div style={{ padding: '20px 0', fontSize: 14, color: '#8A7E72', lineHeight: 1.7 }}>
                 {activeTab === 'desc' && (
                   <div>
-                    <p style={{ marginBottom: 16 }}>{product.description}</p>
+                    <div
+                      className="rich-text-content"
+                      style={{ marginBottom: 16 }}
+                      dangerouslySetInnerHTML={{ __html: product.description || '<p>No description available</p>' }}
+                    />
                     {product.benefits && (
                       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
                         {product.benefits.map(b => (
