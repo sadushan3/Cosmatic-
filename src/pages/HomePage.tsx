@@ -24,6 +24,7 @@ export default function HomePage({ onViewProduct, onViewBrand, onAddToCart, wish
     setTimeout(() => setHeroVisible(true), 100)
   }, [])
 
+  const featuredProducts = products.slice(0, 8)
   const newArrivals = products.filter(p => p.isNew).slice(0, 4)
 
   const concernProducts = activeConcern
