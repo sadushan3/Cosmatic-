@@ -7,9 +7,11 @@ interface Props {
   cartCount: number
   wishlistCount: number
   onSearch: () => void
+  adminUnlocked: boolean
+  onAdminOpen: () => void
 }
 
-export default function Navbar({ page, setPage, cartCount, wishlistCount, onSearch }: Props) {
+export default function Navbar({ page, setPage, cartCount, wishlistCount, onSearch, adminUnlocked, onAdminOpen }: Props) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -25,7 +27,7 @@ export default function Navbar({ page, setPage, cartCount, wishlistCount, onSear
     { label: 'Categories', page: 'category' },
     { label: 'New Arrivals', page: 'shop' },
     { label: 'Offers', page: 'shop' },
-    { label: 'Admin', page: 'admin' },
+    ...(adminUnlocked ? [{ label: 'Admin', page: 'admin' as Page }] : []),
   ]
 
   return (
@@ -68,7 +70,13 @@ export default function Navbar({ page, setPage, cartCount, wishlistCount, onSear
             {navLinks.map((link) => (
               <li key={link.label}>
                 <button
-                  onClick={() => setPage(link.page)}
+                  onClick={() => {
+                    if (link.page === 'admin') {
+                      onAdminOpen()
+                      return
+                    }
+                    setPage(link.page)
+                  }}
                   className="relative"
                   style={{
                     fontSize: 12,
@@ -184,7 +192,15 @@ export default function Navbar({ page, setPage, cartCount, wishlistCount, onSear
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <button
-                    onClick={() => { setPage(link.page); setMenuOpen(false) }}
+                    onClick={() => {
+                      if (link.page === 'admin') {
+                        onAdminOpen()
+                        setMenuOpen(false)
+                        return
+                      }
+                      setPage(link.page)
+                      setMenuOpen(false)
+                    }}
                     style={{
                       fontSize: 14,
                       letterSpacing: '0.12em',
