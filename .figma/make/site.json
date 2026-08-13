@@ -1,0 +1,11 @@
+
+{
+  "description": "A premium, modern e-commerce platform offering curated skincare and beauty products from select brands with elegant design and seamless shopping.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
