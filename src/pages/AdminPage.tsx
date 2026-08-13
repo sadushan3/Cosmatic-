@@ -141,6 +141,12 @@ export default function AdminPage({ setPage }: AdminPageProps) {
   )
 
   async function fetchProducts() {
+    if (!supabase) {
+      setLoading(false)
+      setMessage({ type: 'error', text: 'Connect Supabase first to load products.' })
+      return
+    }
+
     try {
       setLoading(true)
       const { data, error } = await supabase.from('products').select('*').order('created_at', { ascending: false })
@@ -170,6 +176,9 @@ export default function AdminPage({ setPage }: AdminPageProps) {
 
   async function uploadImages(files: File[]) {
     if (!files.length) return []
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.')
+    }
 
     const uploadedUrls: string[] = []
     const bucketName = 'product-images'
@@ -225,7 +234,7 @@ export default function AdminPage({ setPage }: AdminPageProps) {
   }
 
   async function handleDelete(productId: string) {
-    if (!connected) {
+    if (!connected || !supabase) {
       setMessage({ type: 'error', text: 'Supabase credentials are missing.' })
       return
     }
@@ -245,7 +254,7 @@ export default function AdminPage({ setPage }: AdminPageProps) {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    if (!connected) {
+    if (!connected || !supabase) {
       setMessage({ type: 'error', text: 'Supabase credentials are missing.' })
       return
     }

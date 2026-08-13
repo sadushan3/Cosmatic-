@@ -80,7 +80,7 @@ export function toProduct(row: any): Product {
 
 export async function fetchProductsFromSupabase(): Promise<Product[]> {
   const hasConfig = Boolean(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY)
-  if (!hasConfig) return fallbackProducts
+  if (!hasConfig || !supabase) return fallbackProducts
 
   try {
     const { data, error } = await supabase
