@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { formatLkr } from '../lib/currency'
+import { formatCurrency } from '../lib/currency'
 import { supabase } from '../lib/supabase'
 import { brands } from '../data'
 import type { Page, Product } from '../types'
@@ -572,7 +572,7 @@ export default function AdminPage({ setPage }: AdminPageProps) {
               </div>
               <div style={{ fontWeight: 700, color: '#1C1916', marginBottom: 4 }}>{form.name || 'New product name'}</div>
               <div style={{ fontSize: 12, color: '#8A7E72', marginBottom: 8 }}>{form.brand || 'Brand'}</div>
-              <div style={{ fontWeight: 700, color: '#1C1916' }}>{formatLkr(Number(form.price) || 0)}</div>
+              <div style={{ fontWeight: 700, color: '#1C1916' }}>{formatCurrency(Number(form.price) || 0)}</div>
             </div>
 
             <div style={{ display: 'grid', gap: 12, maxHeight: 420, overflowY: 'auto', paddingRight: 4 }}>
@@ -589,7 +589,7 @@ export default function AdminPage({ setPage }: AdminPageProps) {
                       <div style={{ fontSize: 12, color: '#8A7E72' }}>{product.brand}</div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6 }}>
-                      <div style={{ fontWeight: 700, color: '#1C1916' }}>{formatLkr(product.price)}</div>
+                      <div style={{ fontWeight: 700, color: '#1C1916' }}>{formatCurrency(product.price)}</div>
                       <div style={{ display: 'flex', gap: 6 }}>
                         <button type="button" onClick={() => handleEdit(product)} style={{ fontSize: 11, border: '1px solid #E0D9CF', background: '#fff', cursor: 'pointer', padding: '4px 8px' }}>Edit</button>
                         <button type="button" onClick={() => handleDelete(product.id)} style={{ fontSize: 11, border: '1px solid #d8a0a0', background: '#fff', color: '#8a3f3f', cursor: 'pointer', padding: '4px 8px' }}>Delete</button>

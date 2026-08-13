@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Footer from '../components/Footer'
-import { formatLkr } from '../lib/currency'
+import { formatCurrency } from '../lib/currency'
 import { getImageUrl } from '../lib/products'
 import type { CartItem, Page } from '../types'
 
@@ -29,7 +29,7 @@ export default function CheckoutPage({ items, setPage, onOrderComplete }: Props)
   const total = subtotal + delivery
 
   function buildWhatsAppMessage() {
-    const orderLines = items.map(item => `- ${item.product.name} x${item.quantity} (${formatLkr(item.product.price * item.quantity)})`).join('\n')
+    const orderLines = items.map(item => `- ${item.product.name} x${item.quantity} (${formatCurrency(item.product.price * item.quantity)})`).join('\n')
 
     return [
       'New order from NAZ COSMATICES',
@@ -47,9 +47,9 @@ export default function CheckoutPage({ items, setPage, onOrderComplete }: Props)
       'Products:',
       orderLines,
       '',
-      `Subtotal: ${formatLkr(subtotal)}`,
-      `Delivery: ${delivery === 0 ? 'FREE' : formatLkr(delivery)}`,
-      `Total: ${formatLkr(total)}`,
+      `Subtotal: ${formatCurrency(subtotal)}`,
+      `Delivery: ${delivery === 0 ? 'FREE' : formatCurrency(delivery)}`,
+      `Total: ${formatCurrency(total)}`,
     ].join('\n')
   }
 
@@ -161,8 +161,8 @@ export default function CheckoutPage({ items, setPage, onOrderComplete }: Props)
                 <h2 className="font-display text-3xl" style={{ color: '#1C1916', marginBottom: 32 }}>Delivery Method</h2>
                 <div className="flex flex-col gap-4 mb-8">
                   {[
-                    { id: 'standard', label: 'Standard Delivery', sub: '5–7 business days', price: subtotal >= 499 ? 'FREE' : formatLkr(79) },
-                    { id: 'express', label: 'Express Delivery', sub: '2–3 business days', price: formatLkr(149) },
+                    { id: 'standard', label: 'Standard Delivery', sub: '5–7 business days', price: subtotal >= 499 ? 'FREE' : formatCurrency(79) },
+                    { id: 'express', label: 'Express Delivery', sub: '2–3 business days', price: formatCurrency(149) },
                   ].map(opt => (
                     <label
                       key={opt.id}
@@ -234,7 +234,7 @@ export default function CheckoutPage({ items, setPage, onOrderComplete }: Props)
                 <div className="flex gap-4">
                   <button type="button" onClick={() => setStep('delivery')} className="btn-outline" style={{ flex: 1, height: 50, justifyContent: 'center' }}>Back</button>
                   <button type="submit" onClick={handlePlaceOrder} className="btn-primary" style={{ flex: 2, height: 50, justifyContent: 'center' }}>
-                    Place Order — {formatLkr(total)}
+                    Place Order — {formatCurrency(total)}
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </button>
                 </div>
@@ -255,19 +255,19 @@ export default function CheckoutPage({ items, setPage, onOrderComplete }: Props)
                     <div style={{ fontSize: 12, fontWeight: 600, color: '#1C1916', lineHeight: 1.4 }}>{i.product.name}</div>
                     <div style={{ fontSize: 11, color: '#8A7E72' }}>Qty: {i.quantity}</div>
                   </div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1C1916', flexShrink: 0 }}>{formatLkr(i.product.price * i.quantity)}</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1C1916', flexShrink: 0 }}>{formatCurrency(i.product.price * i.quantity)}</div>
                 </div>
               ))}
             </div>
             <div style={{ height: 1, background: '#E0D9CF', margin: '16px 0' }} />
             <div className="flex justify-between mb-2" style={{ fontSize: 13, color: '#8A7E72' }}>
-              <span>Subtotal</span><span>{formatLkr(subtotal)}</span>
+              <span>Subtotal</span><span>{formatCurrency(subtotal)}</span>
             </div>
             <div className="flex justify-between mb-4" style={{ fontSize: 13, color: '#8A7E72' }}>
-              <span>Delivery</span><span>{delivery === 0 ? <span style={{ color: '#2D7A4F' }}>FREE</span> : formatLkr(delivery)}</span>
+              <span>Delivery</span><span>{delivery === 0 ? <span style={{ color: '#2D7A4F' }}>FREE</span> : formatCurrency(delivery)}</span>
             </div>
             <div className="flex justify-between font-display" style={{ fontSize: 22, color: '#1C1916' }}>
-              <span>Total</span><span>{formatLkr(total)}</span>
+              <span>Total</span><span>{formatCurrency(total)}</span>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { formatLkr } from '../lib/currency'
+import { formatCurrency } from '../lib/currency'
 import { getImageUrl, useProducts } from '../lib/products'
 import type { Product, Page } from '../types'
 
@@ -116,7 +116,7 @@ export default function SearchOverlay({ open, onClose, onViewProduct, setPage }:
                     <div>
                       <div style={{ fontSize: 10, color: '#C4A882', letterSpacing: '0.12em', fontWeight: 600, textTransform: 'uppercase' }}>{p.brand}</div>
                       <div style={{ fontSize: 14, color: '#1C1916', fontWeight: 500 }}>{p.name}</div>
-                      <div style={{ fontSize: 13, color: '#8A7E72' }}>{formatLkr(p.price)}</div>
+                      <div style={{ fontSize: 13, color: '#8A7E72' }}>{formatCurrency(p.price)}</div>
                     </div>
                   </button>
                 ))}

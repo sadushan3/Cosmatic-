@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { formatLkr } from '../lib/currency'
+import { formatCurrency } from '../lib/currency'
 import { getImageUrl } from '../lib/products'
 import type { Product } from '../types'
 
@@ -137,9 +137,9 @@ export default function ProductCard({ product, onView, onAddToCart, isWishlisted
           <span style={{ fontSize: 10, color: '#8A7E72' }}>({product.reviews})</span>
         </div>
         <div className="flex items-center gap-2">
-          <span style={{ fontSize: 15, fontWeight: 600, color: '#1C1916' }}>{formatLkr(product.price)}</span>
+          <span style={{ fontSize: 15, fontWeight: 600, color: '#1C1916' }}>{formatCurrency(product.price)}</span>
           {product.originalPrice > product.price && (
-            <span style={{ fontSize: 12, color: '#8A7E72', textDecoration: 'line-through' }}>{formatLkr(product.originalPrice)}</span>
+            <span style={{ fontSize: 12, color: '#8A7E72', textDecoration: 'line-through' }}>{formatCurrency(product.originalPrice)}</span>
           )}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import Footer from '../components/Footer'
-import { formatLkr } from '../lib/currency'
+import { formatCurrency } from '../lib/currency'
 import { getImageUrl } from '../lib/products'
 import type { CartItem, Page } from '../types'
 
@@ -92,9 +92,9 @@ export default function CartPage({ items, onUpdateQty, onRemove, setPage }: Prop
                     </div>
                   </div>
                   <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                    <div style={{ fontSize: 16, fontWeight: 700, color: '#1C1916' }}>{formatLkr(item.product.price * item.quantity)}</div>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: '#1C1916' }}>{formatCurrency(item.product.price * item.quantity)}</div>
                     {item.product.originalPrice > item.product.price && (
-                      <div style={{ fontSize: 12, color: '#8A7E72', textDecoration: 'line-through' }}>{formatLkr(item.product.originalPrice * item.quantity)}</div>
+                      <div style={{ fontSize: 12, color: '#8A7E72', textDecoration: 'line-through' }}>{formatCurrency(item.product.originalPrice * item.quantity)}</div>
                     )}
                   </div>
                 </div>
@@ -107,27 +107,27 @@ export default function CartPage({ items, onUpdateQty, onRemove, setPage }: Prop
               <div className="flex flex-col gap-4 mb-6">
                 <div className="flex justify-between" style={{ fontSize: 14, color: '#8A7E72' }}>
                   <span>Subtotal ({items.reduce((s, i) => s + i.quantity, 0)} items)</span>
-                  <span>{formatLkr(subtotal)}</span>
+                  <span>{formatCurrency(subtotal)}</span>
                 </div>
                 {savings > 0 && (
                   <div className="flex justify-between" style={{ fontSize: 14, color: '#2D7A4F' }}>
                     <span>You save</span>
-                    <span>-{formatLkr(savings)}</span>
+                    <span>-{formatCurrency(savings)}</span>
                   </div>
                 )}
                 <div className="flex justify-between" style={{ fontSize: 14, color: '#8A7E72' }}>
                   <span>Delivery</span>
-                  <span>{delivery === 0 ? <span style={{ color: '#2D7A4F' }}>FREE</span> : formatLkr(delivery)}</span>
+                  <span>{delivery === 0 ? <span style={{ color: '#2D7A4F' }}>FREE</span> : formatCurrency(delivery)}</span>
                 </div>
                 {delivery > 0 && (
                   <div style={{ fontSize: 11, color: '#8A7E72', background: 'rgba(196,168,130,0.15)', padding: '8px 12px' }}>
-                    Add {formatLkr(499 - subtotal)} more for free delivery
+                    Add {formatCurrency(499 - subtotal)} more for free delivery
                   </div>
                 )}
                 <div style={{ height: 1, background: '#E0D9CF', margin: '4px 0' }} />
                 <div className="flex justify-between font-display" style={{ fontSize: 22, color: '#1C1916' }}>
                   <span>Total</span>
-                  <span>{formatLkr(total)}</span>
+                  <span>{formatCurrency(total)}</span>
                 </div>
               </div>
               <button

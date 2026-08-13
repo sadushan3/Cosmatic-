@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import Footer from '../components/Footer'
-import { formatLkr } from '../lib/currency'
+import { formatCurrency } from '../lib/currency'
 import { getImageUrl, useProducts } from '../lib/products'
 import type { Product, Page } from '../types'
 
@@ -103,11 +103,11 @@ export default function ProductPage({ product, onAddToCart, wishlist, onWishlist
             {/* Price */}
             <div className="flex items-center gap-4 mb-8">
               <span className="font-display" style={{ fontSize: 32, color: '#1C1916' }}>
-                {formatLkr(product.price)}
+                {formatCurrency(product.price)}
               </span>
               {product.originalPrice > product.price && (
                 <>
-                  <span style={{ fontSize: 18, color: '#8A7E72', textDecoration: 'line-through' }}>{formatLkr(product.originalPrice)}</span>
+                  <span style={{ fontSize: 18, color: '#8A7E72', textDecoration: 'line-through' }}>{formatCurrency(product.originalPrice)}</span>
                   <span style={{ background: '#C4A882', color: '#1C1916', fontSize: 11, fontWeight: 700, padding: '4px 10px', letterSpacing: '0.1em' }}>
                     {discount}% OFF
                   </span>
@@ -201,7 +201,7 @@ export default function ProductPage({ product, onAddToCart, wishlist, onWishlist
             <div style={{ background: '#F5F2ED', padding: '16px 20px' }}>
               <div className="flex items-center gap-3" style={{ fontSize: 13, color: '#1C1916' }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4A882" strokeWidth="1.8"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                Free delivery on orders above {formatLkr(499)}
+                Free delivery on orders above {formatCurrency(499)}
               </div>
             </div>
 

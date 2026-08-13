@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { brands, journalPosts, skincareConcerns } from '../data'
 import ProductCard from '../components/ProductCard'
 import Footer from '../components/Footer'
-import { formatLkr } from '../lib/currency'
+import { formatCurrency } from '../lib/currency'
 import { useProducts } from '../lib/products'
 import type { Product, Page } from '../types'
 
@@ -157,7 +157,7 @@ export default function HomePage({ onViewProduct, onViewBrand, onAddToCart, wish
             <div style={{ fontSize: 9, color: '#C4A882', letterSpacing: '0.14em', fontWeight: 600, textTransform: 'uppercase', marginBottom: 4 }}>Dot n Key</div>
             <div style={{ fontSize: 13, fontWeight: 600, color: '#1C1916', marginBottom: 8 }}>Vitamin C Serum</div>
             <div className="flex items-center justify-between">
-              <span style={{ fontSize: 14, fontWeight: 600, color: '#1C1916' }}>{formatLkr(1990)}</span>
+              <span style={{ fontSize: 14, fontWeight: 600, color: '#1C1916' }}>{formatCurrency(1990)}</span>
               <span style={{ fontSize: 10, color: '#FAF8F5', background: '#C4A882', padding: '3px 8px', fontWeight: 600 }}>SAVE 20%</span>
             </div>
           </div>
@@ -554,8 +554,8 @@ export default function HomePage({ onViewProduct, onViewBrand, onAddToCart, wish
                   <div style={{ fontSize: 9, color: '#C4A882', letterSpacing: '0.14em', fontWeight: 600, textTransform: 'uppercase', marginBottom: 4 }}>{p.brand}</div>
                   <div style={{ fontSize: 13, color: '#FAF8F5', fontWeight: 500, lineHeight: 1.4, marginBottom: 8 }}>{p.name}</div>
                   <div className="flex items-center gap-2">
-                    <span style={{ fontSize: 14, fontWeight: 700, color: '#C4A882' }}>{formatLkr(p.price)}</span>
-                    <span style={{ fontSize: 11, color: 'rgba(250,248,245,0.4)', textDecoration: 'line-through' }}>{formatLkr(p.originalPrice)}</span>
+                    <span style={{ fontSize: 14, fontWeight: 700, color: '#C4A882' }}>{formatCurrency(p.price)}</span>
+                    <span style={{ fontSize: 11, color: 'rgba(250,248,245,0.4)', textDecoration: 'line-through' }}>{formatCurrency(p.originalPrice)}</span>
                   </div>
                 </div>
               ))}
