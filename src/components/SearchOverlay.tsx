@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { formatLkr } from '../lib/currency'
 import { getImageUrl, useProducts } from '../lib/products'
 import type { Product, Page } from '../types'
 

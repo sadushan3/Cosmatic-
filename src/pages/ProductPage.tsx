@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import Footer from '../components/Footer'
+import { formatLkr } from '../lib/currency'
 import { getImageUrl, useProducts } from '../lib/products'
 import type { Product, Page } from '../types'
 

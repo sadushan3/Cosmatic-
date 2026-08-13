@@ -27,7 +27,7 @@ export default function Navbar({ page, setPage, cartCount, wishlistCount, onSear
     { label: 'Categories', page: 'category' },
     { label: 'New Arrivals', page: 'shop' },
     { label: 'Offers', page: 'shop' },
-    ...(adminUnlocked ? [{ label: 'Admin', page: 'admin' as Page }] : []),
+    { label: 'Admin', page: 'admin' },
   ]
 
   return (
@@ -72,7 +72,11 @@ export default function Navbar({ page, setPage, cartCount, wishlistCount, onSear
                 <button
                   onClick={() => {
                     if (link.page === 'admin') {
-                      onAdminOpen()
+                      if (!adminUnlocked) {
+                        onAdminOpen()
+                        return
+                      }
+                      setPage('admin')
                       return
                     }
                     setPage(link.page)
