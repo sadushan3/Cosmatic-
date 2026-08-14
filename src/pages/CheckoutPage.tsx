@@ -124,13 +124,13 @@ export default function CheckoutPage({ items, setPage, onOrderComplete }: Props)
       </div>
 
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 48, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'clamp(30px, 5vw, 48px)', alignItems: 'start' }}>
           {/* Form */}
           <form onSubmit={step === 'payment' ? handlePlaceOrder : undefined}>
             {step === 'details' && (
               <div>
                 <h2 className="font-display text-3xl" style={{ color: '#1C1916', marginBottom: 32 }}>Contact Information</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 20, marginBottom: 20 }}>
                   <Field label="First Name" value={firstName} onChange={setFirstName} required />
                   <Field label="Last Name" value={lastName} onChange={setLastName} required />
                 </div>
@@ -140,7 +140,7 @@ export default function CheckoutPage({ items, setPage, onOrderComplete }: Props)
                 </div>
                 <h3 className="font-display text-2xl" style={{ color: '#1C1916', margin: '32px 0 20px' }}>Delivery Address</h3>
                 <Field label="Street Address" value={address} onChange={setAddress} required />
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 20 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 20, marginTop: 20 }}>
                   <Field label="City" value={city} onChange={setCity} required />
                   <Field label="PIN Code" value={pin} onChange={setPin} required />
                 </div>

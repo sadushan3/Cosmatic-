@@ -96,7 +96,7 @@ export default function ShopPage({ onViewProduct, onAddToCart, wishlist, onWishl
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-10">
-        <div style={{ display: 'grid', gridTemplateColumns: '220px 1fr', gap: 40 }} className="md:grid-cols-[220px_1fr]">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'clamp(20px, 4vw, 40px)' }} className="md:grid-cols-[200px_1fr]">
           {/* Sidebar */}
           <aside className={`${showFilters ? '' : 'hidden md:block'}`} style={{ position: 'sticky', top: 100, height: 'fit-content' }}>
             <FilterGroup title="Brand" items={['All', ...brands.map(b => b.name)]} active={activeBrand} onChange={setActiveBrand} />

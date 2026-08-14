@@ -45,11 +45,11 @@ export default function ProductPage({ product, onAddToCart, wishlist, onWishlist
       </div>
 
       {/* Main content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
+      <div className="max-w-7xl mx-auto px-6 py-8 md:py-12">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(20px, 5vw, 64px)', alignItems: 'start' }}>
           {/* Gallery */}
           <div>
-            <div style={{ aspectRatio: '4/5', background: '#F5F2ED', overflow: 'hidden', marginBottom: 12 }}>
+            <div style={{ aspectRatio: '4/5', background: '#F5F2ED', overflow: 'hidden', marginBottom: 'clamp(8px, 3vw, 12px)' }}>
               <img
                 src={getImageUrl(product.images[activeImg] || product.image, 700, 875)}
                 alt={product.name}
@@ -57,20 +57,22 @@ export default function ProductPage({ product, onAddToCart, wishlist, onWishlist
               />
             </div>
             {product.images.length > 1 && (
-              <div className="flex gap-3">
+              <div className="flex gap-2 md:gap-3 overflow-x-auto pb-2">
                 {product.images.map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveImg(i)}
                     style={{
-                      width: 72,
-                      height: 72,
+                      width: 'clamp(50px, 12vw, 72px)',
+                      height: 'clamp(50px, 12vw, 72px)',
+                      minWidth: 'clamp(50px, 12vw, 72px)',
                       background: '#F5F2ED',
                       border: `2px solid ${activeImg === i ? '#1C1916' : 'transparent'}`,
                       padding: 0,
                       cursor: 'pointer',
                       overflow: 'hidden',
                       transition: 'border-color 0.3s ease',
+                      flexShrink: 0,
                     }}
                   >
                     <img src={getImageUrl(img, 100, 100)} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -81,7 +83,7 @@ export default function ProductPage({ product, onAddToCart, wishlist, onWishlist
           </div>
 
           {/* Info — sticky on desktop */}
-          <div style={{ position: 'sticky', top: 100 }}>
+          <div style={{ position: 'sticky', top: 'clamp(60px, 10vw, 100px)' }}>
             <div style={{ fontSize: 11, color: '#C4A882', letterSpacing: '0.18em', fontWeight: 600, textTransform: 'uppercase', marginBottom: 8 }}>{product.brand}</div>
             <h1 className="font-display" style={{ fontSize: 'clamp(26px, 3vw, 40px)', color: '#1C1916', lineHeight: 1.15, marginBottom: 16 }}>
               {product.name}
@@ -128,18 +130,18 @@ export default function ProductPage({ product, onAddToCart, wishlist, onWishlist
             </div>
 
             {/* Quantity + CTA */}
-            <div className="flex gap-3 mb-4">
+            <div className="flex gap-2 md:gap-3 mb-4 flex-col sm:flex-row">
               <div className="flex items-center" style={{ border: '1.5px solid #E0D9CF' }}>
                 <button
                   onClick={() => setQty(q => Math.max(1, q - 1))}
-                  style={{ width: 44, height: 52, background: 'none', border: 'none', cursor: 'pointer', fontSize: 18, color: '#1C1916', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ width: 'clamp(36px, 8vw, 44px)', height: 'clamp(44px, 8vw, 52px)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 'clamp(16px, 2vw, 18px)', color: '#1C1916', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   −
                 </button>
-                <span style={{ width: 40, textAlign: 'center', fontSize: 15, fontWeight: 600, color: '#1C1916' }}>{qty}</span>
+                <span style={{ width: 'clamp(30px, 6vw, 40px)', textAlign: 'center', fontSize: 'clamp(13px, 1.5vw, 15px)', fontWeight: 600, color: '#1C1916' }}>{qty}</span>
                 <button
                   onClick={() => setQty(q => q + 1)}
-                  style={{ width: 44, height: 52, background: 'none', border: 'none', cursor: 'pointer', fontSize: 18, color: '#1C1916', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  style={{ width: 'clamp(36px, 8vw, 44px)', height: 'clamp(44px, 8vw, 52px)', background: 'none', border: 'none', cursor: 'pointer', fontSize: 'clamp(16px, 2vw, 18px)', color: '#1C1916', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   +
                 </button>

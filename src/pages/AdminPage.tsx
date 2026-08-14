@@ -352,9 +352,9 @@ export default function AdminPage({ setPage }: AdminPageProps) {
           </div>
         )}
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(280px, 0.8fr)', gap: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
           <form onSubmit={handleSubmit} style={{ background: '#fff', padding: 24, border: '1px solid #E0D9CF' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 18 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 18 }}>
               <Field label="Product Name">
                 <input value={form.name} onChange={e => updateField('name', e.target.value)} className="input-field" placeholder="Vitamin C Serum" />
               </Field>
@@ -491,12 +491,12 @@ export default function AdminPage({ setPage }: AdminPageProps) {
                     ))}
                   </div>
                 ) : (
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: 10 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(60px, 1fr))', gap: 10 }}>
                     {Array.from({ length: 4 }).map((_, index) => (
                       <div
                         key={`placeholder-${index}`}
                         style={{
-                          height: 88,
+                          aspectRatio: '1',
                           borderRadius: 12,
                           background: '#F5F0EA',
                           border: '1px solid #E0D9CF',

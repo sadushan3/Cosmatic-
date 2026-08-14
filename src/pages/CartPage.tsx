@@ -58,7 +58,7 @@ export default function CartPage({ items, onUpdateQty, onRemove, setPage }: Prop
             <button onClick={() => setPage('shop')} className="btn-primary">Explore Products</button>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: 48, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'clamp(30px, 5vw, 48px)', alignItems: 'start' }}>
             {/* Items */}
             <div>
               {items.map(item => (
@@ -67,7 +67,7 @@ export default function CartPage({ items, onUpdateQty, onRemove, setPage }: Prop
                   className="flex gap-5"
                   style={{ borderBottom: '1px solid #E0D9CF', paddingBottom: 24, marginBottom: 24 }}
                 >
-                  <div style={{ width: 100, height: 120, flexShrink: 0, background: '#F5F2ED', overflow: 'hidden' }}>
+                  <div style={{ width: 'clamp(80px, 15vw, 100px)', height: 'clamp(96px, 18vw, 120px)', flexShrink: 0, background: '#F5F2ED', overflow: 'hidden' }}>
                     <img
                       src={getImageUrl(item.product.image, 200, 240)}
                       alt={item.product.name}

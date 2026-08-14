@@ -34,7 +34,7 @@ export default function HomePage({ onViewProduct, onViewBrand, onAddToCart, wish
   return (
     <div style={{ background: '#FAF8F5' }}>
       {/* HERO */}
-      <section style={{ minHeight: '100vh', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', alignItems: 'center', paddingTop: 80 }} className="max-w-none overflow-hidden relative">
+      <section style={{ minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 0, alignItems: 'center', paddingTop: 80 }} className="max-w-none overflow-hidden relative md:grid-cols-[1fr_1fr]">
         {/* Background grain */}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.03\'/%3E%3C/svg%3E")', pointerEvents: 'none', zIndex: 0 }} />
 
@@ -114,6 +114,7 @@ export default function HomePage({ onViewProduct, onViewBrand, onAddToCart, wish
 
         {/* Right – image composition */}
         <div
+          className="hidden md:block"
           style={{
             position: 'relative',
             height: '100vh',
